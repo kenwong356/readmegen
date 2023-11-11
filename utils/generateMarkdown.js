@@ -32,38 +32,50 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  if (license) {
-    switch (license) {
-      case 'Apache':
-        return 'https://opensource.org/licenses/Apache-2.0'
-  
-      case 'GNU GPL v3':
-        return 'https://www.gnu.org/licenses/gpl-3.0'
-      
-      case 'BSD-3':
-        return 'https://opensource.org/licenses/IPL-1.0'
-  
-      case 'IPL':
-        return 'https://opensource.org/licenses/IPL-1.0'
-  
-      case 'MIT':
-        return 'https://opensource.org/licenses/MIT'
-      
-      case 'Mozilla':
-        return 'https://opensource.org/license/mpl-2-0/'
-  
-  
-      default:
-        return "";
-    }
-  } else {
-    return "";
+if (license) {
+  switch (license) {
+    case 'Apache':
+      return 'https://opensource.org/licenses/Apache-2.0'
+
+    case 'GNU GPL v3':
+      return 'https://www.gnu.org/licenses/gpl-3.0'
+    
+    case 'BSD-3':
+      return 'https://opensource.org/licenses/IPL-1.0'
+
+    case 'IPL':
+      return 'https://opensource.org/licenses/IPL-1.0'
+
+    case 'MIT':
+      return 'https://opensource.org/licenses/MIT'
+    
+    case 'Mozilla':
+      return 'https://opensource.org/license/mpl-2-0/'
+
+
+    default:
+      return "";
   }
+} else {
+  return "";
+}
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license) {
+    return `
+    ## License
+
+    ${license}
+    - [${license}](${renderLicenseLink(license)}).
+    `;
+
+  } else {
+    return "";
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
